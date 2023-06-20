@@ -27,5 +27,16 @@
 .gridItem {
 	height: 1.5rem;
 	width: 1.5rem;
+	border: 1px solid gray;
+}
+.gridItem:hover {
+	transform: scale(1.2);
 	border: 1px solid black;
+}
+
+.startNode {
+	background-color: green;
+}
+.endNode {
+	background-color: red;
 }
