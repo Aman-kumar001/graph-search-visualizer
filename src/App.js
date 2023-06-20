@@ -1,25 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/header/Header';
+import Visualzer from './components/visualizer/Visualizer';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div style={{ backgroundColor: 'beige', height: '100vh' }}>
+			<Header />
+			<div className='App'>
+				<Visualzer />
+			</div>
+		</div>
+	);
 }
 
 export default App;
