@@ -31,12 +31,13 @@
 }
 .gridItem:hover {
 	transform: scale(1.2);
-	border: 1px solid black;
+	background-color: gray;
 }
 
 .startNode {
-	background-color: green;
+	background-color: green !important;
+	border: 1px solid yellow;
 }
 .endNode {
-	background-color: red;
+	background-color: red !important;
 }

@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import styles from './visualizer.module.css';
 import { useState } from 'react';
+import { BFS } from '../Bfs/Bfs';
 const Visualzer = () => {
 	const [settings, setSettings] = useState({
 		rows: 20,
@@ -9,8 +10,8 @@ const Visualzer = () => {
 		reset: false,
 		start: false,
 		target: false,
-		startPos: [1, 1],
-		endPos: [20, 20],
+		startPos: [-1, -1],
+		endPos: [-1, -1],
 	});
 
 	const grid = () => {
@@ -23,7 +24,8 @@ const Visualzer = () => {
 						row={i}
 						col={j}
 						id={`${i}` + '-' + `${j}` + 'node'}
-						blocker={false}
+						blocker={0}
+						visited={1}
 						className={
 							styles.gridItem +
 							' ' +
@@ -54,7 +56,11 @@ const Visualzer = () => {
 				);
 			}
 		}
-		return <div className={styles.gridWrapper}>{temp.map((item) => item)}</div>;
+		return (
+			<div className={styles.gridWrapper} id='gridWrap'>
+				{temp.map((item) => item)}
+			</div>
+		);
 	};
 
 	return (
@@ -69,11 +75,35 @@ const Visualzer = () => {
 				>
 					Reset
 				</Button>
-				<Button variant='outlined'>DFS</Button>
 				<Button
 					variant='outlined'
 					onClick={() => {
 						setSettings({ ...settings, addBlockers: false });
+						if (settings.start && settings.target) {
+						} else {
+							alert('Please select start and target node');
+						}
+					}}
+				>
+					DFS
+				</Button>
+				<Button
+					variant='outlined'
+					onClick={() => {
+						setSettings({ ...settings, addBlockers: false });
+						if (settings.start && settings.target) {
+							BFS(
+								settings.startPos,
+								settings.endPos,
+								settings.rows,
+								settings.cols,
+								function (path) {
+									console.log(path);
+								}
+							);
+						} else {
+							alert('Please select start and target node');
+						}
 					}}
 				>
 					BFS
@@ -82,6 +112,10 @@ const Visualzer = () => {
 					variant='outlined'
 					onClick={() => {
 						setSettings({ ...settings, addBlockers: false });
+						if (settings.start && settings.target) {
+						} else {
+							alert('Please select start and target node');
+						}
 					}}
 				>
 					Dijkstra
