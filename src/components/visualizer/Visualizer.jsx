@@ -9,34 +9,45 @@ const Visualzer = () => {
 		reset: false,
 		start: false,
 		target: false,
-		startPos: [0, 0],
-		endPos: [21, 21],
+		startPos: [1, 1],
+		endPos: [20, 20],
 	});
 
 	const grid = () => {
 		let temp = [];
-		for (let i = 0; i < settings.rows; i++) {
-			for (let j = 0; j < settings.cols; j++) {
+		for (let i = 1; i <= settings.rows; i++) {
+			for (let j = 1; j <= settings.cols; j++) {
 				temp.push(
 					<div
 						key={`${i}` + '-' + `${j}`}
-						row={i + 1}
-						col={j + 1}
-						className={{
-							...styles.gridItem,
-							...(settings.startPos[0] === i + 1 &&
-							settings.startPos[1] === j + 1
+						row={i}
+						col={j}
+						id={`${i}` + '-' + `${j}` + 'node'}
+						blocker={false}
+						className={
+							styles.gridItem +
+							' ' +
+							(settings.startPos[0] == i && settings.startPos[1] == j
 								? styles.startNode
-								: '' + ' ' + settings.endPos[0] === i + 1 &&
-								  settings.endPos[1] === j + 1
+								: '') +
+							' ' +
+							(settings.endPos[0] == i && settings.endPos[1] == j
 								? styles.endNode
-								: ''),
-						}}
+								: '')
+						}
 						onClick={(e) => {
-							if (!settings.startPos) {
-								setSettings({ ...settings, startPos: [i + 1, j + 1] });
-							} else if (!settings.endPos) {
-								setSettings({ ...settings, endPos: [i + 1, j + 1] });
+							if (!settings.start) {
+								setSettings({
+									...settings,
+									startPos: [i, j],
+									start: true,
+								});
+							} else if (!settings.target) {
+								setSettings({
+									...settings,
+									endPos: [i, j],
+									target: true,
+								});
 							}
 						}}
 					></div>
