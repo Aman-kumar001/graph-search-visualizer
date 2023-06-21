@@ -2,6 +2,7 @@ import { Button } from '@mui/material';
 import styles from './visualizer.module.css';
 import { useState } from 'react';
 import { BFS } from '../Bfs/Bfs';
+import { HighlightShortestPath } from '../helpers/HighlightShortestPath';
 const Visualzer = () => {
 	const [settings, setSettings] = useState({
 		rows: 20,
@@ -12,6 +13,7 @@ const Visualzer = () => {
 		target: false,
 		startPos: [-1, -1],
 		endPos: [-1, -1],
+		blockers: [],
 	});
 
 	const grid = () => {
@@ -97,8 +99,8 @@ const Visualzer = () => {
 								settings.endPos,
 								settings.rows,
 								settings.cols,
-								function (path) {
-									console.log(path);
+								function (path, dis, parent) {
+									HighlightShortestPath(path, dis, parent);
 								}
 							);
 						} else {

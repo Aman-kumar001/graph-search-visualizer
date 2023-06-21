@@ -4,6 +4,8 @@ export function BFS(startPos, endPos, row, col, callback) {
 	var Q = [];
 	var visited = [`${startPos[0]}` + '-' + `${startPos[1]}`];
 	var path = [];
+	var parent = {};
+	var dis = 0;
 	Q.push(startPos);
 	visited.push(startPos);
 	var grid = document.getElementById('gridWrap');
@@ -12,7 +14,7 @@ export function BFS(startPos, endPos, row, col, callback) {
 	function processQueue() {
 		if (Q.length > 0) {
 			var len = Q.length;
-
+			dis++;
 			for (var i = 0; i < len; i++) {
 				var current = Q.shift();
 
@@ -26,8 +28,9 @@ export function BFS(startPos, endPos, row, col, callback) {
 				) {
 					Q.push([current[0] + 1, current[1]]);
 					visited.push(`${current[0] + 1}` + '-' + `${current[1]}`);
+					parent[`${current[0] + 1}` + '-' + `${current[1]}`] = current;
 					if (current[0] + 1 == endPos[0] && current[1] == endPos[1]) {
-						callback(path); // Invoke the callback with the path
+						callback(path, dis, parent);
 						return;
 					}
 				}
@@ -38,8 +41,9 @@ export function BFS(startPos, endPos, row, col, callback) {
 				) {
 					Q.push([current[0] - 1, current[1]]);
 					visited.push(`${current[0] - 1}` + '-' + `${current[1]}`);
+					parent[`${current[0] - 1}` + '-' + `${current[1]}`] = current;
 					if (current[0] - 1 == endPos[0] && current[1] == endPos[1]) {
-						callback(path); // Invoke the callback with the path
+						callback(path, dis, parent);
 						return;
 					}
 				}
@@ -50,8 +54,9 @@ export function BFS(startPos, endPos, row, col, callback) {
 				) {
 					Q.push([current[0], current[1] + 1]);
 					visited.push(`${current[0]}` + '-' + `${current[1] + 1}`);
+					parent[`${current[0]}` + '-' + `${current[1] + 1}`] = current;
 					if (current[0] == endPos[0] && current[1] + 1 == endPos[1]) {
-						callback(path); // Invoke the callback with the path
+						callback(path, dis, parent);
 						return;
 					}
 				}
@@ -61,16 +66,16 @@ export function BFS(startPos, endPos, row, col, callback) {
 				) {
 					Q.push([current[0], current[1] - 1]);
 					visited.push(`${current[0]}` + '-' + `${current[1] - 1}`);
+					parent[`${current[0]}` + '-' + `${current[1] - 1}`] = current;
 					if (current[0] == endPos[0] && current[1] - 1 == endPos[1]) {
-						callback(path); // Invoke the callback with the path
+						callback(path, dis, parent);
 						return;
 					}
 				}
 			}
 
-			setTimeout(processQueue, 300); // Delay of 0.3 seconds
+			setTimeout(processQueue, 300);
 		}
 	}
-
-	setTimeout(processQueue, 300); // Initial delay of 0.3 seconds
+	setTimeout(processQueue, 300);
 }
