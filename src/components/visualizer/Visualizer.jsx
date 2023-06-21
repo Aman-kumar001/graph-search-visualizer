@@ -1,9 +1,9 @@
 import { Button } from '@mui/material';
 import styles from './visualizer.module.css';
 import { useState } from 'react';
-import { BFS } from '../Bfs/Bfs';
+import { BFS } from '../Algorithms/Bfs';
 import { HighlightShortestPath } from '../helpers/HighlightShortestPath';
-import { Dfs } from '../dfs/Dfs';
+import { Dfs } from '../Algorithms/Dfs';
 
 const Visualzer = () => {
 	const [settings, setSettings] = useState({
@@ -122,7 +122,9 @@ const Visualzer = () => {
 								settings.rows,
 								settings.cols,
 								settings.blockers
-							);
+							).then((res) => {
+								HighlightShortestPath(res.path, res.dis, res.parent);
+							});
 						} else {
 							alert('Please select start and target node');
 						}

@@ -1,13 +1,17 @@
 import { isValid } from '../helpers/CheckValid';
 
-export function Dfs(start, target, row, col, blocker) {
+export async function Dfs(start, target, row, col, blocker) {
 	var visited = new Set();
 	var path = [];
+	var parent = {};
+	var distance = 400;
 	var dx = [0, 1, -1, 0];
 	var dy = [1, 0, 0, -1];
 
 	async function nodeSearch(curr, dis) {
 		if (curr[0] === target[0] && curr[1] === target[1]) {
+			console.log(dis);
+			distance = dis;
 			return true;
 		}
 
@@ -27,7 +31,8 @@ export function Dfs(start, target, row, col, blocker) {
 				!visited.has(`${nextX}-${nextY}`) &&
 				!blocker.includes(`${nextX}-${nextY}`)
 			) {
-				await delay(100); // Delay of 100ms
+				parent[`${nextX}-${nextY}`] = curr;
+				await delay(100);
 				var temp = await nodeSearch([nextX, nextY], dis + 1);
 				if (temp) {
 					return true;
@@ -43,6 +48,6 @@ export function Dfs(start, target, row, col, blocker) {
 		return new Promise((resolve) => setTimeout(resolve, ms));
 	}
 
-	nodeSearch(start, 0);
-	console.log(path);
+	await nodeSearch(start, 0);
+	return { path: path, parent: parent, dis: distance };
 }
