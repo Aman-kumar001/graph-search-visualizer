@@ -7,8 +7,8 @@ import { Dfs } from '../dfs/Dfs';
 
 const Visualzer = () => {
 	const [settings, setSettings] = useState({
-		rows: 20,
-		cols: 20,
+		rows: 5,
+		cols: 5,
 		addBlockers: false,
 		reset: false,
 		start: false,
@@ -121,11 +121,7 @@ const Visualzer = () => {
 								settings.endPos,
 								settings.rows,
 								settings.cols,
-								settings.blockers,
-								function (path, dis, parent) {
-									console.log(path, dis, parent);
-									//HighlightShortestPath(path, dis, parent);
-								}
+								settings.blockers
 							);
 						} else {
 							alert('Please select start and target node');
@@ -170,7 +166,7 @@ const Visualzer = () => {
 				</Button>
 				<Button
 					disabled={!settings.start || !settings.target}
-					variant={settings.addBlockers ? 'contained' : 'outlined'}
+					variant={settings.addingBlockers ? 'contained' : 'outlined'}
 					onClick={() => {
 						setSettings({
 							...settings,

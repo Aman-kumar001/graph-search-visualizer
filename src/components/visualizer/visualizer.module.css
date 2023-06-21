@@ -19,8 +19,8 @@
 }
 .gridWrapper {
 	display: grid;
-	grid-template-columns: repeat(20, 1fr);
-	grid-template-rows: repeat(20, 1fr);
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(5, 1fr);
 	width: fit-content;
 	gap: 0;
 }
