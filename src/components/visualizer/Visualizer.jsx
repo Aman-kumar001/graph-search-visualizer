@@ -3,6 +3,8 @@ import styles from './visualizer.module.css';
 import { useState } from 'react';
 import { BFS } from '../Bfs/Bfs';
 import { HighlightShortestPath } from '../helpers/HighlightShortestPath';
+import { Dfs } from '../dfs/Dfs';
+
 const Visualzer = () => {
 	const [settings, setSettings] = useState({
 		rows: 20,
@@ -87,7 +89,24 @@ const Visualzer = () => {
 					variant='outlined'
 					color='warning'
 					onClick={() => {
-						setSettings({ ...settings, addBlockers: false });
+						//reset function resets all the states and the grid
+						setSettings({
+							...settings,
+							addingBlockers: false,
+							blockers: [],
+							start: false,
+							target: false,
+							startPos: [-1, -1],
+							endPos: [-1, -1],
+						});
+						//looping through all the nodes and setting their background to none
+						for (let i = 1; i <= settings.rows; i++) {
+							for (let j = 1; j <= settings.cols; j++) {
+								document.getElementById(
+									`${i}` + '-' + `${j}` + 'node'
+								).style.background = 'none';
+							}
+						}
 					}}
 				>
 					Reset
@@ -97,6 +116,17 @@ const Visualzer = () => {
 					onClick={() => {
 						setSettings({ ...settings, addBlockers: false });
 						if (settings.start && settings.target) {
+							Dfs(
+								settings.startPos,
+								settings.endPos,
+								settings.rows,
+								settings.cols,
+								settings.blockers,
+								function (path, dis, parent) {
+									console.log(path, dis, parent);
+									//HighlightShortestPath(path, dis, parent);
+								}
+							);
 						} else {
 							alert('Please select start and target node');
 						}
