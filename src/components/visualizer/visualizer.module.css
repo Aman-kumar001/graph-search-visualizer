@@ -22,7 +22,7 @@
 	grid-template-columns: repeat(20, 1fr);
 	grid-template-rows: repeat(20, 1fr);
 	width: fit-content;
-	gap: 0;
+	gap: 2px;
 }
 .gridItem {
 	height: 1.5rem;
@@ -31,12 +31,11 @@
 }
 .gridItem:hover {
 	transform: scale(1.2);
-	background-color: gray;
+	background-color: gray !important;
 }
 
 .startNode {
 	background-color: green !important;
-	border: 1px solid yellow;
 }
 .endNode {
 	background-color: red !important;
