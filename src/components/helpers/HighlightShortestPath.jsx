@@ -1,11 +1,15 @@
 export function HighlightShortestPath(path, dis, parent) {
+	if (dis == -1) {
+		alert('No path found');
+		return;
+	}
 	var len = path.length;
 	var st = path[path.length - 1];
 	console.log(path, dis, parent);
 	for (let i = 0; i < len; i++) {
 		document.getElementById(
 			`${st[0]}` + '-' + `${st[1]}` + 'node'
-		).style.backgroundColor = 'purple';
+		).style.backgroundColor = 'yellow';
 		if (parent[`${st[0]}` + '-' + `${st[1]}`] == undefined) {
 			break;
 		}

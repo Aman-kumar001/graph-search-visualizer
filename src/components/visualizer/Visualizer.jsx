@@ -13,6 +13,7 @@ const Visualzer = () => {
 		target: false,
 		startPos: [-1, -1],
 		endPos: [-1, -1],
+		addingBlockers: false,
 		blockers: [],
 	});
 
@@ -52,6 +53,20 @@ const Visualzer = () => {
 									endPos: [i, j],
 									target: true,
 								});
+							} else if (settings.addingBlockers) {
+								if (
+									!settings.blockers.includes(`${i}` + '-' + `${j}`) &&
+									!(settings.startPos[0] == i && settings.startPos[1] == j) &&
+									!(settings.endPos[0] == i && settings.endPos[1] == j)
+								) {
+									document.getElementById(
+										`${i}` + '-' + `${j}` + 'node'
+									).style.backgroundColor = 'brown';
+									setSettings({
+										...settings,
+										blockers: [...settings.blockers, `${i}` + '-' + `${j}`],
+									});
+								}
 							}
 						}}
 					></div>
@@ -99,6 +114,7 @@ const Visualzer = () => {
 								settings.endPos,
 								settings.rows,
 								settings.cols,
+								settings.blockers,
 								function (path, dis, parent) {
 									HighlightShortestPath(path, dis, parent);
 								}
@@ -123,12 +139,16 @@ const Visualzer = () => {
 					Dijkstra
 				</Button>
 				<Button
+					disabled={!settings.start || !settings.target}
 					variant={settings.addBlockers ? 'contained' : 'outlined'}
 					onClick={() => {
-						setSettings({ ...settings, addBlockers: !settings.addBlockers });
+						setSettings({
+							...settings,
+							addingBlockers: !settings.addingBlockers,
+						});
 					}}
 				>
-					Add blockers
+					{!settings.addBlockers ? `Add blockers` : `Done`}
 				</Button>
 			</div>
 
