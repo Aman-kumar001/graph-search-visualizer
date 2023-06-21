@@ -19,8 +19,6 @@ export async function Dfs(start, target, row, col, blocker) {
 
 		document.getElementById(`${curr[0]}-${curr[1]}node`).style.backgroundColor =
 			'rgb(117, 117, 246)';
-		document.getElementById(`${curr[0]}-${curr[1]}node`).style.border =
-			'1px solid rgb(117, 117, 246)';
 
 		path.push(curr);
 
