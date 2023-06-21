@@ -7,8 +7,8 @@ import { Dfs } from '../dfs/Dfs';
 
 const Visualzer = () => {
 	const [settings, setSettings] = useState({
-		rows: 5,
-		cols: 5,
+		rows: 20,
+		cols: 20,
 		addBlockers: false,
 		reset: false,
 		start: false,
