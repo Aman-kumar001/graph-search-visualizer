@@ -23,9 +23,7 @@ export function BFS(startPos, endPos, row, col, blockers, callback) {
 				document.getElementById(
 					`${current[0]}` + '-' + `${current[1]}` + 'node'
 				).style.backgroundColor = 'rgb(117, 117, 246)';
-				document.getElementById(
-					`${current[0]}` + '-' + `${current[1]}` + 'node'
-				).style.border = '1px solid rgb(117, 117, 246)';
+
 				if (
 					isValid(current[0] + 1, current[1], row, col) &&
 					!visited.includes(`${current[0] + 1}` + '-' + `${current[1]}`) &&

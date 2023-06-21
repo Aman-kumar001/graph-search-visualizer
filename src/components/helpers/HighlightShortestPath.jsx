@@ -10,9 +10,6 @@ export function HighlightShortestPath(path, dis, parent) {
 		document.getElementById(
 			`${st[0]}` + '-' + `${st[1]}` + 'node'
 		).style.backgroundColor = 'yellow';
-		document.getElementById(
-			`${st[0]}` + '-' + `${st[1]}` + 'node'
-		).style.borderRadius = '8px';
 
 		if (parent[`${st[0]}` + '-' + `${st[1]}`] == undefined) {
 			break;
