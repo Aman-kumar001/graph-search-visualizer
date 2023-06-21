@@ -178,7 +178,7 @@ const Visualzer = () => {
 						});
 					}}
 				>
-					{!settings.addBlockers ? `Add blockers` : `Done`}
+					{!settings.addingBlockers ? `Add blockers` : `Done`}
 				</Button>
 			</div>
 

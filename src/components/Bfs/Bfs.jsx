@@ -1,4 +1,4 @@
-import { isValid } from '../CheckValid';
+import { isValid } from '../helpers/CheckValid';
 
 export function BFS(startPos, endPos, row, col, blockers, callback) {
 	var Q = [];
