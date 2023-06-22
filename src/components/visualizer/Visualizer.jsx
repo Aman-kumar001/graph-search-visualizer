@@ -176,7 +176,9 @@ const Visualzer = () => {
 								settings.rows,
 								settings.cols,
 								settings.blockers
-							);
+							).then((res) => {
+								HighlightShortestPath(res.path, res.dis, res.parent);
+							});
 						} else {
 							alert('Please select start and target node');
 						}
