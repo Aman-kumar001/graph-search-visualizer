@@ -5,6 +5,7 @@ import { BFS } from '../Algorithms/Bfs';
 import { HighlightShortestPath } from '../helpers/HighlightShortestPath';
 import { Dfs } from '../Algorithms/Dfs';
 import { Dijkstra } from '../Algorithms/Dijkstra';
+import { GridReset } from '../helpers/GridReset';
 
 const Visualzer = () => {
 	const [settings, setSettings] = useState({
@@ -125,6 +126,13 @@ const Visualzer = () => {
 					onClick={() => {
 						setSettings({ ...settings, addBlockers: false });
 						if (settings.start && settings.target) {
+							GridReset(
+								settings.startPos,
+								settings.endPos,
+								settings.rows,
+								settings.cols,
+								settings.blockers
+							);
 							Dfs(
 								settings.startPos,
 								settings.endPos,
@@ -147,6 +155,13 @@ const Visualzer = () => {
 					onClick={() => {
 						setSettings({ ...settings, addBlockers: false });
 						if (settings.start && settings.target) {
+							GridReset(
+								settings.startPos,
+								settings.endPos,
+								settings.rows,
+								settings.cols,
+								settings.blockers
+							);
 							BFS(
 								settings.startPos,
 								settings.endPos,
@@ -170,6 +185,13 @@ const Visualzer = () => {
 					onClick={() => {
 						setSettings({ ...settings, addBlockers: false });
 						if (settings.start && settings.target) {
+							GridReset(
+								settings.startPos,
+								settings.endPos,
+								settings.rows,
+								settings.cols,
+								settings.blockers
+							);
 							Dijkstra(
 								settings.startPos,
 								settings.endPos,
