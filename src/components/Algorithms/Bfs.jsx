@@ -84,10 +84,10 @@ export function BFS(startPos, endPos, row, col, blockers, callback) {
 				}
 			}
 
-			setTimeout(processQueue, 150);
+			setTimeout(processQueue, 100);
 		}
 	}
-	setTimeout(processQueue, 150);
+	setTimeout(processQueue, 100);
 	// if (!found) {
 	// 	callback(path, -1, parent);
 	// 	return;
