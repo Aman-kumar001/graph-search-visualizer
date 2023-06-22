@@ -33,7 +33,7 @@ export async function Dijkstra(start, target, row, col, blockers) {
 
 	while (true) {
 		var node = findMin();
-		await new Promise((resolve) => setTimeout(resolve, 100));
+		await new Promise((resolve) => setTimeout(resolve, 50));
 		if (node[0] === target[0] && node[1] === target[1]) {
 			path.push(node);
 			return {
