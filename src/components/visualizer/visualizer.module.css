@@ -42,6 +42,18 @@
 .endNode {
 	background-color: red !important;
 }
+.gridItemSorting {
+	height: 0.5rem;
+	width: 0.5rem;
+	border: 1px solid gray;
+}
+.gridWrapperSorting {
+	display: grid;
+	grid-template-columns: repeat(60, 1fr);
+	grid-template-rows: repeat(60, 1fr);
+	width: fit-content;
+	column-gap: 2px;
+}
 
 @media (max-width: 768px) {
 	.gridWrapper {
@@ -51,5 +63,9 @@
 	.btn {
 		min-width: 4rem !important;
 		padding: 0.2rem !important;
+	}
+	.gridWrapperSorting {
+		grid-template-columns: repeat(40, 1fr);
+		grid-template-rows: repeat(50, 1fr);
 	}
 }
