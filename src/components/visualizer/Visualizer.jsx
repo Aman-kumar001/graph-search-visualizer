@@ -1,9 +1,10 @@
 import { Button } from '@mui/material';
 import styles from './visualizer.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BFS } from '../Algorithms/Bfs';
 import { HighlightShortestPath } from '../helpers/HighlightShortestPath';
 import { Dfs } from '../Algorithms/Dfs';
+import { Dijkstra } from '../Algorithms/Dijkstra';
 
 const Visualzer = () => {
 	const [settings, setSettings] = useState({
@@ -18,6 +19,12 @@ const Visualzer = () => {
 		addingBlockers: false,
 		blockers: [],
 	});
+
+	useEffect(() => {
+		if (window.innerWidth < 768) {
+			setSettings({ ...settings, rows: 20, cols: 10 });
+		}
+	}, []);
 
 	const grid = () => {
 		let temp = [];
@@ -88,6 +95,7 @@ const Visualzer = () => {
 				<Button
 					variant='outlined'
 					color='warning'
+					className={styles.btn}
 					onClick={() => {
 						//reset function resets all the states and the grid
 						setSettings({
@@ -113,6 +121,7 @@ const Visualzer = () => {
 				</Button>
 				<Button
 					variant='outlined'
+					className={styles.btn}
 					onClick={() => {
 						setSettings({ ...settings, addBlockers: false });
 						if (settings.start && settings.target) {
@@ -134,6 +143,7 @@ const Visualzer = () => {
 				</Button>
 				<Button
 					variant='outlined'
+					className={styles.btn}
 					onClick={() => {
 						setSettings({ ...settings, addBlockers: false });
 						if (settings.start && settings.target) {
@@ -156,9 +166,17 @@ const Visualzer = () => {
 				</Button>
 				<Button
 					variant='outlined'
+					className={styles.btn}
 					onClick={() => {
 						setSettings({ ...settings, addBlockers: false });
 						if (settings.start && settings.target) {
+							Dijkstra(
+								settings.startPos,
+								settings.endPos,
+								settings.rows,
+								settings.cols,
+								settings.blockers
+							);
 						} else {
 							alert('Please select start and target node');
 						}
@@ -167,6 +185,7 @@ const Visualzer = () => {
 					Dijkstra
 				</Button>
 				<Button
+					className={styles.btn}
 					disabled={!settings.start || !settings.target}
 					variant={settings.addingBlockers ? 'contained' : 'outlined'}
 					onClick={() => {
@@ -176,7 +195,7 @@ const Visualzer = () => {
 						});
 					}}
 				>
-					{!settings.addingBlockers ? `Add blockers` : `Done`}
+					{!settings.addingBlockers ? `Blockers` : `Done`}
 				</Button>
 			</div>
 

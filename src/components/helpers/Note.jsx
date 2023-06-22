@@ -4,8 +4,8 @@ const Note = () => {
 			NOTE:
 			<br />
 			1. Click on the grid to select the start and end node.
-			<br /> 2. Click on the grid to add walls after clicking on the add
-			blockers button.
+			<br /> 2. Click on the grid to add walls after clicking on the blockers
+			button.
 		</p>
 	);
 };
