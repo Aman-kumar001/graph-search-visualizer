@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import styles from './visualizer.module.css';
 import { Button } from '@mui/material';
 import { CreateArray } from '../helpers/CreateArray';
+import { BubbleSort } from '../Algorithms/BubbleSort';
+import { SelectionSort } from '../Algorithms/SelectionSort';
 
 const Sorting = () => {
 	const [settings, setSettings] = useState({
@@ -49,10 +51,22 @@ const Sorting = () => {
 				>
 					Generate
 				</Button>
-				<Button variant='outlined' className={styles.btn}>
+				<Button
+					variant='outlined'
+					className={styles.btn}
+					onClick={() => {
+						BubbleSort(settings.inputs);
+					}}
+				>
 					Bubble Sort
 				</Button>
-				<Button variant='outlined' className={styles.btn}>
+				<Button
+					variant='outlined'
+					className={styles.btn}
+					onClick={() => {
+						SelectionSort(settings.inputs);
+					}}
+				>
 					Selection Sort
 				</Button>
 				<Button variant='outlined' className={styles.btn}>
