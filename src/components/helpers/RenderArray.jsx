@@ -10,6 +10,6 @@ export function Render(len, row, i, color) {
 	for (var j = row; j > row - len; j--) {
 		document.getElementById(
 			`${j}` + '-' + `${i + 1}` + 'node'
-		).style.backgroundColor = color;
+		).style.background = color;
 	}
 }

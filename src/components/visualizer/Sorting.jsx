@@ -4,7 +4,7 @@ import { Button } from '@mui/material';
 import { CreateArray } from '../helpers/CreateArray';
 import { BubbleSort } from '../Algorithms/BubbleSort';
 import { SelectionSort } from '../Algorithms/SelectionSort';
-import { RenderArray } from '../helpers/RenderArray';
+import { Render, RenderArray } from '../helpers/RenderArray';
 
 const Sorting = () => {
 	const [settings, setSettings] = useState({
@@ -17,6 +17,15 @@ const Sorting = () => {
 			setSettings({ ...settings, rows: 50, cols: 40 });
 		}
 	}, []);
+
+	function resetGrid(row, col) {
+		for (var i = 0; i < col; i++) {
+			for (var j = 0; j < row; j++) {
+				Render(row, settings.rows, i, 'none');
+			}
+		}
+	}
+
 	const grid = () => {
 		let temp = [];
 		for (let i = 1; i <= settings.rows; i++) {
@@ -82,6 +91,16 @@ const Sorting = () => {
 				</Button>
 				<Button variant='outlined' className={styles.btn}>
 					Heap Sort
+				</Button>
+				<Button
+					variant='contained'
+					disabled={settings.inputs.length > 0 ? false : true}
+					className={styles.btn}
+					onClick={() => {
+						resetGrid(settings.rows, settings.cols);
+					}}
+				>
+					Reset
 				</Button>
 			</div>
 			<div className={styles.gridCont}>{grid()}</div>
