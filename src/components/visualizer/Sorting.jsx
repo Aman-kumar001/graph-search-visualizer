@@ -64,7 +64,7 @@ const Sorting = () => {
 					variant='outlined'
 					className={styles.btn}
 					onClick={() => {
-						SelectionSort(settings.inputs);
+						SelectionSort(settings, setSettings);
 					}}
 				>
 					Selection Sort
