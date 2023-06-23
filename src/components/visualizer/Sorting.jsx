@@ -4,6 +4,7 @@ import { Button } from '@mui/material';
 import { CreateArray } from '../helpers/CreateArray';
 import { BubbleSort } from '../Algorithms/BubbleSort';
 import { SelectionSort } from '../Algorithms/SelectionSort';
+import { RenderArray } from '../helpers/RenderArray';
 
 const Sorting = () => {
 	const [settings, setSettings] = useState({
@@ -47,6 +48,7 @@ const Sorting = () => {
 						let temp = CreateArray(settings.rows, settings.cols);
 						console.log(temp);
 						setSettings({ ...settings, inputs: temp });
+						RenderArray(temp, settings.rows, settings.cols);
 					}}
 				>
 					Generate
@@ -55,7 +57,7 @@ const Sorting = () => {
 					variant='outlined'
 					className={styles.btn}
 					onClick={() => {
-						BubbleSort(settings.inputs);
+						BubbleSort(settings, setSettings).then(() => {});
 					}}
 				>
 					Bubble Sort
@@ -64,7 +66,7 @@ const Sorting = () => {
 					variant='outlined'
 					className={styles.btn}
 					onClick={() => {
-						SelectionSort(settings, setSettings);
+						SelectionSort(settings, setSettings).then(() => {});
 					}}
 				>
 					Selection Sort

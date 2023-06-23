@@ -1,9 +1,18 @@
-export function SelectionSort(settings, setSettings) {
+import { Render } from '../helpers/RenderArray';
+
+export async function SelectionSort(settings, setSettings) {
 	var array = settings.inputs;
 	for (var i = 0; i < array.length - 1; i++) {
-		for (var j = i; j < array.length; j++) {
-			[array[j], array[j]] = [array[j], array[j]];
+		for (var j = i + 1; j < array.length; j++) {
+			if (array[i] > array[j]) {
+				Render(array[i], settings.rows, i, 'yellow');
+				Render(array[j], settings.rows, j, 'yellow');
+				await new Promise((resolve) => setTimeout(resolve, 50));
+				[array[i], array[j]] = [array[j], array[i]];
+				Render(array[i], settings.rows, i, 'red');
+				Render(array[j], settings.rows, j, 'red');
+			}
 		}
 	}
-	console.log(array);
+	console.log(array, 'selection');
 }
