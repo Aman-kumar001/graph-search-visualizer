@@ -7,7 +7,7 @@ export async function SelectionSort(settings, setSettings) {
 			if (array[i] > array[j]) {
 				Render(array[i], settings.rows, i, 'yellow');
 				Render(array[j], settings.rows, j, 'yellow');
-				await new Promise((resolve) => setTimeout(resolve, 50));
+				await new Promise((resolve) => setTimeout(resolve, 25));
 				[array[i], array[j]] = [array[j], array[i]];
 				Render(array[i], settings.rows, i, 'red');
 				Render(array[j], settings.rows, j, 'red');
