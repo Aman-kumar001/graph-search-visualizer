@@ -5,6 +5,7 @@ import { CreateArray } from '../helpers/CreateArray';
 import { BubbleSort } from '../Algorithms/BubbleSort';
 import { SelectionSort } from '../Algorithms/SelectionSort';
 import { Render, RenderArray } from '../helpers/RenderArray';
+import { InsertionSort } from '../Algorithms/InsertionSort';
 
 const Sorting = () => {
 	const [settings, setSettings] = useState({
@@ -80,7 +81,13 @@ const Sorting = () => {
 				>
 					Selection Sort
 				</Button>
-				<Button variant='outlined' className={styles.btn}>
+				<Button
+					variant='outlined'
+					className={styles.btn}
+					onClick={() => {
+						InsertionSort(settings);
+					}}
+				>
 					Insertion Sort
 				</Button>
 				<Button variant='outlined' className={styles.btn}>
