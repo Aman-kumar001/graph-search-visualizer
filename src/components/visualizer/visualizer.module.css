@@ -55,6 +55,27 @@
 	column-gap: 2px;
 }
 
+.btnContainerSort {
+	display: flex;
+	column-gap: 1rem;
+	width: 100%;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+.btnContainerSort .btn {
+	height: fit-content;
+}
+.btnContainerSort div {
+	flex: 1;
+	display: flex;
+	column-gap: 1rem;
+	width: 100%;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: center;
+}
+
 @media (max-width: 768px) {
 	.gridWrapper {
 		grid-template-columns: repeat(10, 1fr);

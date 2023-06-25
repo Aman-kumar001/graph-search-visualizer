@@ -11,7 +11,7 @@ export async function SelectionSort(settings, setSettings) {
 				[array[i], array[j]] = [array[j], array[i]];
 				Render(array[i], settings.rows, i, 'red');
 				Render(array[j], settings.rows, j, 'red');
-				Render(settings.rows - array[j], settings.rows - array[j], j, 'none');
+				Render(settings.rows - array[i], settings.rows - array[i], i, 'none');
 			}
 		}
 	}

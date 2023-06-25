@@ -6,6 +6,7 @@ import { BubbleSort } from '../Algorithms/BubbleSort';
 import { SelectionSort } from '../Algorithms/SelectionSort';
 import { Render, RenderArray } from '../helpers/RenderArray';
 import { InsertionSort } from '../Algorithms/InsertionSort';
+import { MergeSort } from '../Algorithms/MergeSort';
 
 const Sorting = () => {
 	const [settings, setSettings] = useState({
@@ -50,65 +51,67 @@ const Sorting = () => {
 	};
 	return (
 		<div className={styles.container}>
-			<div className={styles.btnContainer}>
+			<div className={styles.btnContainerSort}>
 				<Button
 					variant='contained'
 					className={styles.btn}
 					onClick={() => {
+						if (settings.inputs.length > 0)
+							resetGrid(settings.rows, settings.cols);
 						let temp = CreateArray(settings.rows, settings.cols);
 						console.log(temp);
 						setSettings({ ...settings, inputs: temp });
 						RenderArray(temp, settings.rows, settings.cols);
 					}}
 				>
-					Generate
+					Generate {settings.inputs.length > 0 ? 'New' : ''}
 				</Button>
-				<Button
-					variant='outlined'
-					className={styles.btn}
-					onClick={() => {
-						BubbleSort(settings, setSettings).then(() => {});
-					}}
-				>
-					Bubble Sort
-				</Button>
-				<Button
-					variant='outlined'
-					className={styles.btn}
-					onClick={() => {
-						SelectionSort(settings, setSettings).then(() => {});
-					}}
-				>
-					Selection Sort
-				</Button>
-				<Button
-					variant='outlined'
-					className={styles.btn}
-					onClick={() => {
-						InsertionSort(settings);
-					}}
-				>
-					Insertion Sort
-				</Button>
-				<Button variant='outlined' className={styles.btn}>
-					Merge Sort
-				</Button>
-				<Button variant='outlined' className={styles.btn}>
-					Quick Sort
-				</Button>
-				<Button variant='outlined' className={styles.btn}>
-					Heap Sort
-				</Button>
-				<Button
-					variant='contained'
-					disabled={settings.inputs.length > 0 ? false : true}
-					className={styles.btn}
-					onClick={() => {
-						resetGrid(settings.rows, settings.cols);
-					}}
-				>
-					Reset
-				</Button>
+				<div>
+					<Button
+						variant='outlined'
+						className={styles.btn}
+						onClick={() => {
+							BubbleSort(settings, setSettings).then(() => {});
+						}}
+					>
+						Bubble Sort
+					</Button>
+					<Button
+						variant='outlined'
+						className={styles.btn}
+						onClick={() => {
+							SelectionSort(settings, setSettings).then(() => {});
+						}}
+					>
+						Selection Sort
+					</Button>
+					<Button
+						variant='outlined'
+						className={styles.btn}
+						onClick={() => {
+							InsertionSort(settings);
+						}}
+					>
+						Insertion Sort
+					</Button>
+					{/* </div>
+				<div> */}
+					<Button
+						variant='outlined'
+						className={styles.btn}
+						onClick={() => {
+							MergeSort(settings);
+						}}
+					>
+						Merge Sort
+					</Button>
+					<Button variant='outlined' className={styles.btn}>
+						Quick Sort
+					</Button>
+					<Button variant='outlined' className={styles.btn}>
+						Heap Sort
+					</Button>
+				</div>
 			</div>
 			<div className={styles.gridCont}>{grid()}</div>
 		</div>
