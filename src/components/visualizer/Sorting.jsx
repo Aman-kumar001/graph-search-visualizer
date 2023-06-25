@@ -8,6 +8,7 @@ import { Render, RenderArray } from '../helpers/RenderArray';
 import { InsertionSort } from '../Algorithms/InsertionSort';
 import { MergeSort } from '../Algorithms/MergeSort';
 import { QuickSort } from '../Algorithms/QuickSort';
+import { HeapSort } from '../Algorithms/HeapSort';
 
 const Sorting = () => {
 	const [settings, setSettings] = useState({
@@ -116,7 +117,13 @@ const Sorting = () => {
 					>
 						Quick Sort
 					</Button>
-					<Button variant='outlined' className={styles.btn}>
+					<Button
+						variant='outlined'
+						className={styles.btn}
+						onClick={() => {
+							HeapSort(settings);
+						}}
+					>
 						Heap Sort
 					</Button>
 				</div>
