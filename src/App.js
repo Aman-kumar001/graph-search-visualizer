@@ -8,7 +8,7 @@ import Sorting from './components/visualizer/Sorting';
 function App() {
 	const [view, setView] = useState('Graph');
 	return (
-		<div style={{ backgroundColor: '#FAF0E4', height: '100vh' }}>
+		<div style={{ backgroundColor: '#FAF0E4', minHeight: '100vh' }}>
 			<Header setView={setView} view={view} />
 			<div className='App'>
 				{view === 'Graph' && <Note />}

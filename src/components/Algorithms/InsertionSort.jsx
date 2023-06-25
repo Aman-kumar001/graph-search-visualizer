@@ -9,7 +9,7 @@ export async function InsertionSort(settings) {
 		while (j >= 0 && array[j] > key) {
 			Render(array[j], settings.rows, j, 'black');
 			Render(array[j + 1], settings.rows, j + 1, 'yellow');
-			await new Promise((resolve) => setTimeout(resolve, 20));
+			await new Promise((resolve) => setTimeout(resolve, settings.speed));
 			array[j + 1] = array[j];
 			Render(array[j], settings.rows, j, 'red');
 			Render(array[j + 1], settings.rows, j + 1, 'red');

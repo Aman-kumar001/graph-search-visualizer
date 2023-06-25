@@ -17,10 +17,10 @@ export async function MergeArray(array, l, r, settings) {
 	var k = l;
 	while (i < n1 && j < n2) {
 		if (L[i] <= R[j]) {
-			Render(L[i], settings.rows, l + i, 'black');
+			Render(array[l + i], settings.rows, l + i, 'black');
 			Render(array[k], settings.rows, k, 'yellow');
+			await new Promise((resolve) => setTimeout(resolve, settings.speed));
 			array[k] = L[i];
-			await new Promise((resolve) => setTimeout(resolve, 25));
 			Render(array[k], settings.rows, k, 'red');
 			Render(array[l + i], settings.rows, l + i, 'red');
 			Render(settings.rows - array[k], settings.rows - array[k], k, 'none');
@@ -32,10 +32,10 @@ export async function MergeArray(array, l, r, settings) {
 			);
 			i++;
 		} else {
-			Render(R[j], settings.rows, m + 1 + j, 'black');
+			Render(array[m + 1 + j], settings.rows, m + 1 + j, 'black');
 			Render(array[k], settings.rows, k, 'yellow');
+			await new Promise((resolve) => setTimeout(resolve, settings.speed));
 			array[k] = R[j];
-			await new Promise((resolve) => setTimeout(resolve, 25));
 			Render(array[k], settings.rows, k, 'red');
 			Render(array[m + 1 + j], settings.rows, m + 1 + j, 'red');
 			Render(settings.rows - array[k], settings.rows - array[k], k, 'none');
@@ -50,10 +50,10 @@ export async function MergeArray(array, l, r, settings) {
 		k++;
 	}
 	while (i < n1) {
-		Render(L[i], settings.rows, l + i, 'black');
-		Render(array[k], settings.rows, k, 'yellow');
+		Render(array[l + i], settings.rows, l + i, 'yellow');
+		Render(array[k], settings.rows, k, 'black');
+		await new Promise((resolve) => setTimeout(resolve, settings.speed));
 		array[k] = L[i];
-		await new Promise((resolve) => setTimeout(resolve, 25));
 		Render(array[k], settings.rows, k, 'red');
 		Render(array[l + i], settings.rows, l + i, 'red');
 		Render(settings.rows - array[k], settings.rows - array[k], k, 'none');
@@ -67,10 +67,10 @@ export async function MergeArray(array, l, r, settings) {
 		k++;
 	}
 	while (j < n2) {
-		Render(R[j], settings.rows, m + 1 + j, 'black');
-		Render(array[k], settings.rows, k, 'yellow');
+		Render(array[m + 1 + j], settings.rows, m + 1 + j, 'yellow');
+		Render(array[k], settings.rows, k, 'black');
+		await new Promise((resolve) => setTimeout(resolve, settings.speed));
 		array[k] = R[j];
-		await new Promise((resolve) => setTimeout(resolve, 25));
 		Render(array[k], settings.rows, k, 'red');
 		Render(array[m + 1 + j], settings.rows, m + 1 + j, 'red');
 		Render(settings.rows - array[k], settings.rows - array[k], k, 'none');

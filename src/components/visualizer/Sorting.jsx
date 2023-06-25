@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react';
 import styles from './visualizer.module.css';
-import { Button } from '@mui/material';
+import { Button, Slider } from '@mui/material';
 import { CreateArray } from '../helpers/CreateArray';
 import { BubbleSort } from '../Algorithms/BubbleSort';
 import { SelectionSort } from '../Algorithms/SelectionSort';
 import { Render, RenderArray } from '../helpers/RenderArray';
 import { InsertionSort } from '../Algorithms/InsertionSort';
 import { MergeSort } from '../Algorithms/MergeSort';
+import { QuickSort } from '../Algorithms/QuickSort';
 
 const Sorting = () => {
 	const [settings, setSettings] = useState({
 		rows: 50,
 		cols: 60,
 		inputs: [],
+		speed: 100,
 	});
 	useEffect(() => {
 		if (window.innerWidth < 768) {
@@ -105,7 +107,13 @@ const Sorting = () => {
 					>
 						Merge Sort
 					</Button>
-					<Button variant='outlined' className={styles.btn}>
+					<Button
+						variant='outlined'
+						className={styles.btn}
+						onClick={() => {
+							QuickSort(settings);
+						}}
+					>
 						Quick Sort
 					</Button>
 					<Button variant='outlined' className={styles.btn}>
@@ -114,6 +122,16 @@ const Sorting = () => {
 				</div>
 			</div>
 			<div className={styles.gridCont}>{grid()}</div>
+			<div>
+				<Slider
+					min={100}
+					step={100}
+					max={2000}
+					onChange={(e) => {
+						setSettings({ ...settings, speed: e.target.value });
+					}}
+				/>
+			</div>
 		</div>
 	);
 };

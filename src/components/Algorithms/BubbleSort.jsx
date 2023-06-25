@@ -7,7 +7,7 @@ export async function BubbleSort(settings, setSettings) {
 			if (array[j] > array[j + 1]) {
 				Render(array[j], settings.rows, j, 'black');
 				Render(array[j + 1], settings.rows, j + 1, 'yellow');
-				await new Promise((resolve) => setTimeout(resolve, 25));
+				await new Promise((resolve) => setTimeout(resolve, settings.speed));
 				[array[j], array[j + 1]] = [array[j + 1], array[j]];
 				Render(array[j], settings.rows, j, 'red');
 				Render(array[j + 1], settings.rows, j + 1, 'red');
