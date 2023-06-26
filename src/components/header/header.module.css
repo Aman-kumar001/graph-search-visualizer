@@ -13,6 +13,14 @@
 	font-weight: 700;
 	margin: auto;
 }
+.header p {
+	margin: 0;
+	align-items: center;
+	display: flex;
+}
+.header p :hover {
+	cursor: pointer;
+}
 @media (max-width: 768px) {
 	.header {
 		width: 95%;

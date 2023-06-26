@@ -128,17 +128,8 @@ const Sorting = () => {
 					</Button>
 				</div>
 			</div>
+			<div></div>
 			<div className={styles.gridCont}>{grid()}</div>
-			<div>
-				<Slider
-					min={100}
-					step={100}
-					max={2000}
-					onChange={(e) => {
-						setSettings({ ...settings, speed: e.target.value });
-					}}
-				/>
-			</div>
 		</div>
 	);
 };
