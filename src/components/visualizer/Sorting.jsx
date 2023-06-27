@@ -58,6 +58,11 @@ const Sorting = () => {
 				<Button
 					variant='contained'
 					className={styles.btn}
+					style={{
+						backgroundColor: 'transparent',
+						color: '#85a389',
+						border: '1px solid #85a389',
+					}}
 					onClick={() => {
 						if (settings.inputs.length > 0)
 							resetGrid(settings.rows, settings.cols);
@@ -73,6 +78,11 @@ const Sorting = () => {
 					<Button
 						variant='outlined'
 						className={styles.btn}
+						style={{
+							backgroundColor: '#85a389',
+							color: 'white',
+							border: '1px solid #85a389',
+						}}
 						onClick={() => {
 							BubbleSort(settings, setSettings).then(() => {});
 						}}
@@ -82,6 +92,11 @@ const Sorting = () => {
 					<Button
 						variant='outlined'
 						className={styles.btn}
+						style={{
+							backgroundColor: '#85a389',
+							color: 'white',
+							border: '1px solid #85a389',
+						}}
 						onClick={() => {
 							SelectionSort(settings, setSettings).then(() => {});
 						}}
@@ -91,6 +106,11 @@ const Sorting = () => {
 					<Button
 						variant='outlined'
 						className={styles.btn}
+						style={{
+							backgroundColor: '#85a389',
+							color: 'white',
+							border: '1px solid #85a389',
+						}}
 						onClick={() => {
 							InsertionSort(settings);
 						}}
@@ -102,6 +122,11 @@ const Sorting = () => {
 					<Button
 						variant='outlined'
 						className={styles.btn}
+						style={{
+							backgroundColor: '#85a389',
+							color: 'white',
+							border: '1px solid #85a389',
+						}}
 						onClick={() => {
 							MergeSort(settings);
 						}}
@@ -111,6 +136,11 @@ const Sorting = () => {
 					<Button
 						variant='outlined'
 						className={styles.btn}
+						style={{
+							backgroundColor: '#85a389',
+							color: 'white',
+							border: '1px solid #85a389',
+						}}
 						onClick={() => {
 							QuickSort(settings);
 						}}
@@ -120,6 +150,11 @@ const Sorting = () => {
 					<Button
 						variant='outlined'
 						className={styles.btn}
+						style={{
+							backgroundColor: '#85a389',
+							color: 'white',
+							border: '1px solid #85a389',
+						}}
 						onClick={() => {
 							HeapSort(settings);
 						}}

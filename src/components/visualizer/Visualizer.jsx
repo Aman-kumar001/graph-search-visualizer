@@ -123,6 +123,11 @@ const Visualzer = () => {
 				<Button
 					variant='outlined'
 					className={styles.btn}
+					style={{
+						backgroundColor: '#85a389',
+						color: 'white',
+						border: '1px solid #85a389',
+					}}
 					onClick={() => {
 						setSettings({ ...settings, addBlockers: false });
 						if (settings.start && settings.target) {
@@ -152,6 +157,11 @@ const Visualzer = () => {
 				<Button
 					variant='outlined'
 					className={styles.btn}
+					style={{
+						backgroundColor: '#85a389',
+						color: 'white',
+						border: '1px solid #85a389',
+					}}
 					onClick={() => {
 						setSettings({ ...settings, addBlockers: false });
 						if (settings.start && settings.target) {
@@ -182,6 +192,11 @@ const Visualzer = () => {
 				<Button
 					variant='outlined'
 					className={styles.btn}
+					style={{
+						backgroundColor: '#85a389',
+						color: 'white',
+						border: '1px solid #85a389',
+					}}
 					onClick={() => {
 						setSettings({ ...settings, addBlockers: false });
 						if (settings.start && settings.target) {
@@ -210,6 +225,13 @@ const Visualzer = () => {
 				</Button>
 				<Button
 					className={styles.btn}
+					style={{
+						backgroundColor: settings.addingBlockers
+							? '#85a389'
+							: 'transparent',
+						color: settings.addingBlockers ? 'white' : '#85a389',
+						border: '1px solid #85a389',
+					}}
 					disabled={!settings.start || !settings.target}
 					variant={settings.addingBlockers ? 'contained' : 'outlined'}
 					onClick={() => {
