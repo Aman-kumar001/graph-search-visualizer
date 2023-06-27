@@ -6,8 +6,8 @@ This repository provides a visualization tool for various algorithms built using
 
 To use the algorithm visualizer, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/algorithm-visualizer.git`
-2. Navigate to the project directory: `cd algorithm-visualizer`
+1. Clone the repository: `git clone https://github.com/Aman-kumar001/graph-search-visualizer.git`
+2. Navigate to the project directory: `cd graph-search-visualizer`
 3. Install dependencies: `npm install`
 4. Start the development server: `npm start`
 
